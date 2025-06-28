@@ -16,7 +16,8 @@ class Recorder:
             os.makedirs(self.file_storage_path)
         else:
             for file in os.listdir(self.file_storage_path):
-                os.remove(self.file_storage_path + "/" + file)
+                if file.endswith(".csv"):
+                    os.remove(self.file_storage_path + "/" + file)
         
     def record_csv_cb(self, msg: String):
         # record message format: "filename,data_1,data_2,..."
